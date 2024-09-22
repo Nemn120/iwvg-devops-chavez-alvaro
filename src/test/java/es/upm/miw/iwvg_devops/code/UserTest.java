@@ -24,9 +24,9 @@ public class UserTest {
     @BeforeEach
     void setUp() {
         users = new ArrayList<>();
-        users.add(new User(ID_USER_1, NAME_MIGUEL, FAMILYNAME_FLORES));
-        users.add(new User(ID_USER_2, NAME_CARLOS, FAMILYNAME_CORTAZAR));
-        users.add(new User(ID_USER_3, NAME_LUIS, FAMILYNAME_RIVERA));
+        users.add(new User(ID_USER_1, NAME_MIGUEL, FAMILYNAME_FLORES, null));
+        users.add(new User(ID_USER_2, NAME_CARLOS, FAMILYNAME_CORTAZAR, null));
+        users.add(new User(ID_USER_3, NAME_LUIS, FAMILYNAME_RIVERA, null));
     }
 
     @Test
