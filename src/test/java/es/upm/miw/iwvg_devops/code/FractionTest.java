@@ -51,4 +51,66 @@ public class FractionTest {
             assertEquals(expectedDecimals[i], fractions.get(i).decimal(), 0.0001);
         }
     }
+
+    @Test
+    void isProperTest() {
+        Fraction fraction1 = new Fraction(2, 5);
+        assertTrue(fraction1.isProper());
+    }
+
+    @Test
+    void isImproperTest() {
+        Fraction fraction1 = new Fraction(12, 5);
+        assertTrue(fraction1.isImproper());
+    }
+
+    @Test
+    void isEquivalentTest() {
+        Fraction fraction1 = new Fraction(6, 5);
+        Fraction fraction2 = new Fraction(12, 10);
+
+        assertTrue(fraction1.isEquivalent(fraction2));
+        assertTrue(fraction2.isEquivalent(fraction1));
+    }
+
+    @Test
+    void addTest() {
+        Fraction fraction1 = new Fraction(1, 2);
+        Fraction fraction2 = new Fraction(3, 4);
+        Fraction result = fraction1.add(fraction2);
+
+        Fraction fraction = new Fraction(5, 4);
+        assertTrue(fraction.isEquivalent(result));
+    }
+
+    @Test
+    void multiplyTest() {
+        Fraction fraction1 = new Fraction(1, 2);
+        Fraction fraction2 = new Fraction(3, 4);
+
+        Fraction result = fraction1.multiply(fraction2);
+        Fraction fraction = new Fraction(3, 8);
+
+        assertTrue(fraction.isEquivalent(result));
+    }
+
+    @Test
+    void divideTest() {
+        Fraction fraction1 = new Fraction(1, 2);
+        Fraction fraction2 = new Fraction(3, 4);
+
+        Fraction result = fraction2.divide(fraction1);
+
+        assertEquals(new Fraction(6, 4).toString(), result.toString());
+    }
+
+    @Test
+    void divideByZeroTest() {
+        Fraction fraction1 = new Fraction(1, 2);
+        Fraction zeroFraction = new Fraction(0, 1);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            fraction1.divide(zeroFraction);
+        });
+    }
 }
