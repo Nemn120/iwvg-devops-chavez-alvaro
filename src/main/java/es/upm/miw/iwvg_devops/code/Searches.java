@@ -1,6 +1,7 @@
 package es.upm.miw.iwvg_devops.code;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class Searches {
@@ -49,5 +50,12 @@ public class Searches {
                         .filter(Fraction::isImproper)
                         .anyMatch(fraction -> fraction.equals(fractionImproper)))
                 .map(User::getFamilyName);
+    }
+
+    public Optional<Fraction> findFractionAdditionByUserId(String userId) {
+        return new UsersDatabase().findAll()
+                .filter(user -> userId.equals(user.getId()))
+                .flatMap(x -> x.getFractions().stream())
+                .reduce(Fraction::add);
     }
 }

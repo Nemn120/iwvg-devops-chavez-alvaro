@@ -3,10 +3,12 @@ package es.upm.miw.iwvg_devops.code;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SearchesTest {
 
@@ -47,6 +49,14 @@ class SearchesTest {
         Fraction fractionImproper =   new Fraction(4, 3);
         Stream<String> familyNameInitial = new Searches().findUserFamilyNameBySomeImproperFraction(fractionImproper);
         assertEquals(List.of("Blanco"), familyNameInitial.toList());
+    }
+
+    @Test
+    void testFindFractionAdditionByUserId() {
+        Fraction fractionAdd =   new Fraction(16, 8);
+        Optional<Fraction> fractionAdditionByUserId = new Searches().findFractionAdditionByUserId("4");
+        assertTrue(fractionAdditionByUserId.isPresent());
+        assertEquals(fractionAdd, fractionAdditionByUserId.get());
     }
 
 }
