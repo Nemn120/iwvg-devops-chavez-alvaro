@@ -42,4 +42,12 @@ public class Searches {
                         .anyMatch(fraction -> fraction.equals(fractionProper) && fraction.isProper()))
                 .map(User::initialsFamilyName);
     }
+
+    public Stream<String> findUserFamilyNameBySomeImproperFraction(Fraction fractionImproper) {
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                        .filter(Fraction::isImproper)
+                        .anyMatch(fraction -> fraction.equals(fractionImproper)))
+                .map(User::getFamilyName);
+    }
 }

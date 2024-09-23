@@ -42,4 +42,11 @@ class SearchesTest {
         assertEquals(List.of("L."), familyNameInitial.toList());
     }
 
+    @Test
+    void testFindUserFamilyNameBySomeImproperFraction() {
+        Fraction fractionImproper =   new Fraction(4, 3);
+        Stream<String> familyNameInitial = new Searches().findUserFamilyNameBySomeImproperFraction(fractionImproper);
+        assertEquals(List.of("Blanco"), familyNameInitial.toList());
+    }
+
 }
