@@ -34,4 +34,12 @@ class SearchesTest {
         assertEquals(List.of(1.0,1.0, Double.NaN, Double.POSITIVE_INFINITY , 1.0),antonioFractions.toList());
     }
 
+    @Test
+    void testFindUserFamilyNameInitialBySomeProperFraction() {
+        // Fraction "López" -> "L."
+        Fraction fractionProper =   new Fraction(1, 5);
+        Stream<String> familyNameInitial = new Searches().findUserFamilyNameInitialBySomeProperFraction(fractionProper);
+        assertEquals(List.of("L."), familyNameInitial.toList());
+    }
+
 }
